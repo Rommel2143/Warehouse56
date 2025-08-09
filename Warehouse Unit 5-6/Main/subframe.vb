@@ -40,4 +40,8 @@
     Private Sub StockMonitoringToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StockMonitoringToolStripMenuItem.Click
         display_inSub(StockMonitoring)
     End Sub
+
+    Private Sub DailySummaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DailySummaryToolStripMenuItem.Click
+        display_inSub(daily_summary)
+    End Sub
 End Class

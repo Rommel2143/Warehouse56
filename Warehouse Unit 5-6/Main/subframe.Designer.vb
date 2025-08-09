@@ -45,6 +45,7 @@ Partial Class subframe
         Me.btn_administrator = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.DailySummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.btnmenu_strip.SuspendLayout()
@@ -141,7 +142,7 @@ Partial Class subframe
         '
         'ViewRecordsToolStripMenuItem
         '
-        Me.ViewRecordsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RecievingToolStripMenuItem1, Me.DeliveryOUTToolStripMenuItem, Me.ReturnBoxToolStripMenuItem})
+        Me.ViewRecordsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RecievingToolStripMenuItem1, Me.DeliveryOUTToolStripMenuItem, Me.ReturnBoxToolStripMenuItem, Me.DailySummaryToolStripMenuItem})
         Me.ViewRecordsToolStripMenuItem.Name = "ViewRecordsToolStripMenuItem"
         Me.ViewRecordsToolStripMenuItem.Size = New System.Drawing.Size(199, 26)
         Me.ViewRecordsToolStripMenuItem.Text = "View Records"
@@ -149,19 +150,19 @@ Partial Class subframe
         'RecievingToolStripMenuItem1
         '
         Me.RecievingToolStripMenuItem1.Name = "RecievingToolStripMenuItem1"
-        Me.RecievingToolStripMenuItem1.Size = New System.Drawing.Size(156, 26)
+        Me.RecievingToolStripMenuItem1.Size = New System.Drawing.Size(180, 26)
         Me.RecievingToolStripMenuItem1.Text = "Incoming"
         '
         'DeliveryOUTToolStripMenuItem
         '
         Me.DeliveryOUTToolStripMenuItem.Name = "DeliveryOUTToolStripMenuItem"
-        Me.DeliveryOUTToolStripMenuItem.Size = New System.Drawing.Size(156, 26)
+        Me.DeliveryOUTToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.DeliveryOUTToolStripMenuItem.Text = "Outgoing"
         '
         'ReturnBoxToolStripMenuItem
         '
         Me.ReturnBoxToolStripMenuItem.Name = "ReturnBoxToolStripMenuItem"
-        Me.ReturnBoxToolStripMenuItem.Size = New System.Drawing.Size(156, 26)
+        Me.ReturnBoxToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
         Me.ReturnBoxToolStripMenuItem.Text = "Return Box"
         '
         'StockMonitoringToolStripMenuItem
@@ -233,6 +234,12 @@ Partial Class subframe
         Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(162, 30)
         Me.LogoutToolStripMenuItem.Text = "Logout"
         '
+        'DailySummaryToolStripMenuItem
+        '
+        Me.DailySummaryToolStripMenuItem.Name = "DailySummaryToolStripMenuItem"
+        Me.DailySummaryToolStripMenuItem.Size = New System.Drawing.Size(187, 26)
+        Me.DailySummaryToolStripMenuItem.Text = "Daily Summary"
+        '
         'subframe
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -274,4 +281,5 @@ Partial Class subframe
     Friend WithEvents DeliveryOUTToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Label1 As Label
     Friend WithEvents ReturnBoxToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DailySummaryToolStripMenuItem As ToolStripMenuItem
 End Class
