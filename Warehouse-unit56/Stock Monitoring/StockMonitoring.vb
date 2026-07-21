@@ -53,7 +53,7 @@ Public Class StockMonitoring
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        exportExcel(datagrid1, "Total Stock", Date.Now.ToString)
+        'exportExcel(datagrid1, "Total Stock", Date.Now.ToString)
     End Sub
 
     Private Sub dtpicker1_ValueChanged(sender As Object, e As EventArgs) Handles dtpicker1.ValueChanged
@@ -87,6 +87,6 @@ Public Class StockMonitoring
     End Sub
 
     Private Sub btn_export_Click(sender As Object, e As EventArgs) Handles btn_export.Click
-        exportExcel(datagrid2, "Daily Summary", Date.Now.ToString())
+        'exportExcel(datagrid2, "Daily Summary", Date.Now.ToString())
     End Sub
 End Class

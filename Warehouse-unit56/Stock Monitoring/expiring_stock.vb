@@ -50,6 +50,6 @@
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        exportExcel(datagrid1, "Expiring Stocks", Date.Now.ToString)
+        'exportExcel(datagrid1, "Expiring Stocks", Date.Now.ToString)
     End Sub
 End Class

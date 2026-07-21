@@ -71,7 +71,7 @@ Public Class Recieving_view
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        exportExcel(datagrid1, "Recieving Records")
+        'exportExcel(datagrid1, "Recieving Records")
     End Sub
 
     Private Sub Guna2Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel2.Paint

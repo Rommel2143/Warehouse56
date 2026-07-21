@@ -22,11 +22,11 @@ Partial Class Delivery
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Delivery))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Delivery))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.flow1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -42,6 +42,10 @@ Partial Class Delivery
         Me.datagrid1 = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Guna2VSeparator1 = New Guna.UI2.WinForms.Guna2VSeparator()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmbDestination = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtRfid = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Guna2Panel1.SuspendLayout()
@@ -66,9 +70,9 @@ Partial Class Delivery
         Me.flow1.AutoScroll = True
         Me.flow1.AutoScrollMargin = New System.Drawing.Size(0, 20)
         Me.flow1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.flow1.Location = New System.Drawing.Point(27, 351)
+        Me.flow1.Location = New System.Drawing.Point(27, 472)
         Me.flow1.Name = "flow1"
-        Me.flow1.Size = New System.Drawing.Size(444, 279)
+        Me.flow1.Size = New System.Drawing.Size(444, 158)
         Me.flow1.TabIndex = 207
         '
         'Panel5
@@ -78,7 +82,7 @@ Partial Class Delivery
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel5.Location = New System.Drawing.Point(27, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(444, 351)
+        Me.Panel5.Size = New System.Drawing.Size(444, 472)
         Me.Panel5.TabIndex = 209
         '
         'Guna2Panel1
@@ -87,6 +91,10 @@ Partial Class Delivery
         Me.Guna2Panel1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Guna2Panel1.BorderRadius = 10
         Me.Guna2Panel1.BorderThickness = 1
+        Me.Guna2Panel1.Controls.Add(Me.Label6)
+        Me.Guna2Panel1.Controls.Add(Me.txtRfid)
+        Me.Guna2Panel1.Controls.Add(Me.cmbDestination)
+        Me.Guna2Panel1.Controls.Add(Me.Label4)
         Me.Guna2Panel1.Controls.Add(Me.Label2)
         Me.Guna2Panel1.Controls.Add(Me.txt_boxno)
         Me.Guna2Panel1.Controls.Add(Me.Label1)
@@ -99,7 +107,7 @@ Partial Class Delivery
         Me.Guna2Panel1.Name = "Guna2Panel1"
         Me.Guna2Panel1.ShadowDecoration.BorderRadius = 12
         Me.Guna2Panel1.ShadowDecoration.Color = System.Drawing.Color.Silver
-        Me.Guna2Panel1.Size = New System.Drawing.Size(398, 314)
+        Me.Guna2Panel1.Size = New System.Drawing.Size(432, 439)
         Me.Guna2Panel1.TabIndex = 206
         '
         'Label2
@@ -107,7 +115,7 @@ Partial Class Delivery
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DimGray
-        Me.Label2.Location = New System.Drawing.Point(54, 224)
+        Me.Label2.Location = New System.Drawing.Point(18, 360)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(47, 13)
         Me.Label2.TabIndex = 208
@@ -129,11 +137,11 @@ Partial Class Delivery
         Me.txt_boxno.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txt_boxno.IconLeft = CType(resources.GetObject("txt_boxno.IconLeft"), System.Drawing.Image)
         Me.txt_boxno.IconLeftSize = New System.Drawing.Size(24, 24)
-        Me.txt_boxno.Location = New System.Drawing.Point(56, 240)
+        Me.txt_boxno.Location = New System.Drawing.Point(20, 376)
         Me.txt_boxno.Name = "txt_boxno"
         Me.txt_boxno.PlaceholderText = "Scan Box no..."
         Me.txt_boxno.SelectedText = ""
-        Me.txt_boxno.Size = New System.Drawing.Size(126, 36)
+        Me.txt_boxno.Size = New System.Drawing.Size(395, 36)
         Me.txt_boxno.TabIndex = 207
         '
         'Label1
@@ -153,7 +161,7 @@ Partial Class Delivery
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.DimGray
-        Me.Label5.Location = New System.Drawing.Point(53, 149)
+        Me.Label5.Location = New System.Drawing.Point(17, 291)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(52, 13)
         Me.Label5.TabIndex = 205
@@ -164,7 +172,7 @@ Partial Class Delivery
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.DimGray
-        Me.Label3.Location = New System.Drawing.Point(53, 74)
+        Me.Label3.Location = New System.Drawing.Point(17, 149)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(66, 13)
         Me.Label3.TabIndex = 204
@@ -185,11 +193,11 @@ Partial Class Delivery
         Me.txt_batch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txt_batch.IconLeft = CType(resources.GetObject("txt_batch.IconLeft"), System.Drawing.Image)
         Me.txt_batch.IconLeftSize = New System.Drawing.Size(24, 24)
-        Me.txt_batch.Location = New System.Drawing.Point(55, 90)
+        Me.txt_batch.Location = New System.Drawing.Point(20, 165)
         Me.txt_batch.Name = "txt_batch"
         Me.txt_batch.PlaceholderText = "Enter Batch..."
         Me.txt_batch.SelectedText = ""
-        Me.txt_batch.Size = New System.Drawing.Size(248, 36)
+        Me.txt_batch.Size = New System.Drawing.Size(395, 36)
         Me.txt_batch.TabIndex = 202
         '
         'txtqr
@@ -208,11 +216,11 @@ Partial Class Delivery
         Me.txtqr.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtqr.IconLeft = CType(resources.GetObject("txtqr.IconLeft"), System.Drawing.Image)
         Me.txtqr.IconLeftSize = New System.Drawing.Size(24, 24)
-        Me.txtqr.Location = New System.Drawing.Point(55, 165)
+        Me.txtqr.Location = New System.Drawing.Point(20, 307)
         Me.txtqr.Name = "txtqr"
         Me.txtqr.PlaceholderText = "Scan QR..."
         Me.txtqr.SelectedText = ""
-        Me.txtqr.Size = New System.Drawing.Size(248, 36)
+        Me.txtqr.Size = New System.Drawing.Size(395, 36)
         Me.txtqr.TabIndex = 203
         '
         'Panel3
@@ -228,16 +236,16 @@ Partial Class Delivery
         Me.datagrid1.AllowUserToAddRows = False
         Me.datagrid1.AllowUserToDeleteRows = False
         Me.datagrid1.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(239, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.datagrid1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
@@ -246,7 +254,7 @@ Partial Class Delivery
         Me.datagrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
@@ -276,22 +284,11 @@ Partial Class Delivery
         Me.datagrid1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText
         Me.datagrid1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.datagrid1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.datagrid1.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.datagrid1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.datagrid1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.datagrid1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.datagrid1.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.datagrid1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.datagrid1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Me.datagrid1.ThemeStyle.HeaderStyle.Height = 28
         Me.datagrid1.ThemeStyle.ReadOnly = True
-        Me.datagrid1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
-        Me.datagrid1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.datagrid1.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.datagrid1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.datagrid1.ThemeStyle.RowsStyle.Height = 28
-        Me.datagrid1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.datagrid1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
         'Panel2
         '
@@ -312,6 +309,68 @@ Partial Class Delivery
         Me.Guna2VSeparator1.Size = New System.Drawing.Size(10, 630)
         Me.Guna2VSeparator1.TabIndex = 210
         Me.Guna2VSeparator1.UseTransparentBackground = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.DimGray
+        Me.Label4.Location = New System.Drawing.Point(18, 76)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(67, 13)
+        Me.Label4.TabIndex = 209
+        Me.Label4.Text = "Destination"
+        '
+        'cmbDestination
+        '
+        Me.cmbDestination.BackColor = System.Drawing.Color.Transparent
+        Me.cmbDestination.BorderColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.cmbDestination.BorderRadius = 3
+        Me.cmbDestination.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.cmbDestination.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbDestination.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cmbDestination.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cmbDestination.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.cmbDestination.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.cmbDestination.ItemHeight = 30
+        Me.cmbDestination.Items.AddRange(New Object() {"Other", "Factory 2"})
+        Me.cmbDestination.Location = New System.Drawing.Point(20, 92)
+        Me.cmbDestination.Name = "cmbDestination"
+        Me.cmbDestination.Size = New System.Drawing.Size(395, 36)
+        Me.cmbDestination.TabIndex = 210
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.DimGray
+        Me.Label6.Location = New System.Drawing.Point(18, 223)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(51, 13)
+        Me.Label6.TabIndex = 212
+        Me.Label6.Text = "RFID Tag"
+        '
+        'txtRfid
+        '
+        Me.txtRfid.BorderColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.txtRfid.BorderRadius = 3
+        Me.txtRfid.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtRfid.DefaultText = ""
+        Me.txtRfid.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtRfid.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtRfid.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtRfid.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtRfid.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtRfid.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.txtRfid.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtRfid.IconLeft = CType(resources.GetObject("txtRfid.IconLeft"), System.Drawing.Image)
+        Me.txtRfid.IconLeftSize = New System.Drawing.Size(24, 24)
+        Me.txtRfid.Location = New System.Drawing.Point(20, 239)
+        Me.txtRfid.Name = "txtRfid"
+        Me.txtRfid.PlaceholderText = "Scan RFID Tag..."
+        Me.txtRfid.SelectedText = ""
+        Me.txtRfid.Size = New System.Drawing.Size(395, 36)
+        Me.txtRfid.TabIndex = 211
         '
         'Delivery
         '
@@ -349,4 +408,8 @@ Partial Class Delivery
     Friend WithEvents Label2 As Label
     Friend WithEvents txt_boxno As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2VSeparator1 As Guna.UI2.WinForms.Guna2VSeparator
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txtRfid As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents cmbDestination As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents Label4 As Label
 End Class

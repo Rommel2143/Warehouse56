@@ -63,17 +63,42 @@ Public Class Delivery
 
     Private Sub txt_boxno_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_boxno.KeyDown
         If e.KeyCode = Keys.Enter Then
-            If outQR(txtqr.Text.Trim, txt_batch.Text.Trim, txt_boxno.Text.Trim) = True Then
+
+
+            If outQR(txtqr.Text.Trim, txt_batch.Text.Trim, txt_boxno.Text.Trim) = True And  Then
+
+                If cmbDestination.Text = "Factory 2" Then
+                    Dim transaction As New CreateTransaction()
+
+                    transaction.SaveScanData(
+                                            txtRfid.Text.Trim(),
+                                            txtqr.Text.Trim(),
+                                            txt_batch.Text.Trim(), ""
+                                        )
+                End If
+
                 getGroup()
                 displayrecords()
             End If
             txt_boxno.Clear()
-            txtqr.Clear()
-            txtqr.Focus()
+            txtRfid.Clear()
+            txtRfid.Focus()
         End If
     End Sub
 
     Private Sub Guna2Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel1.Paint
 
+    End Sub
+
+    Private Sub txtRfid_TextChanged(sender As Object, e As EventArgs) Handles txtRfid.TextChanged
+
+    End Sub
+
+    Private Sub txtRfid_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRfid.KeyDown
+        If e.KeyCode = Keys.Enter Then
+
+            txtqr.Enabled = True
+            txtqr.Focus()
+        End If
     End Sub
 End Class
