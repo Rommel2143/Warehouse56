@@ -2,7 +2,7 @@
 
 Public Class CreateTransaction
 
-    Private ReadOnly ConnectionString As String = "Server=localhost;Database=rfid_inventory;Uid=root;Pwd=;"
+    Private ReadOnly ConnectionString As String = "Server=PTI-032;Database=rfid_inventory;Uid=rfid;Pwd=rfid123;"
     '"Server=PTI-032;Database=rfid_inventory;Uid=rfid;Pwd=rfid123;"
 
 

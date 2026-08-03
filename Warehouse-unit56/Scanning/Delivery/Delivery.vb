@@ -7,7 +7,7 @@ Public Class Delivery
 
     Private Sub txtqr_KeyDown(sender As Object, e As KeyEventArgs) Handles txtqr.KeyDown
         If e.KeyCode = Keys.Enter Then
-
+            txt_boxno.Clear()
             txt_boxno.Enabled = True
             txt_boxno.Focus()
         End If
@@ -65,7 +65,7 @@ Public Class Delivery
         If e.KeyCode = Keys.Enter Then
 
 
-            If outQR(txtqr.Text.Trim, txt_batch.Text.Trim, txt_boxno.Text.Trim) = True And  Then
+            If outQR(txtqr.Text.Trim, txt_batch.Text.Trim, txt_boxno.Text.Trim) = True Then
 
                 If cmbDestination.Text = "Factory 2" Then
                     Dim transaction As New CreateTransaction()
@@ -96,7 +96,7 @@ Public Class Delivery
 
     Private Sub txtRfid_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRfid.KeyDown
         If e.KeyCode = Keys.Enter Then
-
+            txtqr.Clear()
             txtqr.Enabled = True
             txtqr.Focus()
         End If
