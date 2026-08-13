@@ -62,29 +62,79 @@ Public Class Delivery
     End Sub
 
     Private Sub txt_boxno_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_boxno.KeyDown
-        If e.KeyCode = Keys.Enter Then
 
+        If e.KeyCode <> Keys.Enter Then
+            Return
+        End If
 
-            If outQR(txtqr.Text.Trim, txt_batch.Text.Trim, txt_boxno.Text.Trim) = True Then
+        Try
+            Dim rfid As String = txtRfid.Text.Trim()
+            Dim qr As String = txtqr.Text.Trim()
+            Dim batch As String = txt_batch.Text.Trim()
+            Dim boxNo As String = txt_boxno.Text.Trim()
+
+            ' Check RFID structure
+            If String.IsNullOrWhiteSpace(rfid) OrElse
+           rfid.Contains("|") OrElse
+           Not rfid.StartsWith("E280116", StringComparison.OrdinalIgnoreCase) AndAlso
+           Not rfid.StartsWith("800304", StringComparison.OrdinalIgnoreCase) Then
+
+                Throw New Exception("Invalid RFID tag!")
+            End If
+
+            ' Check QR structure
+            If Not qr.Contains("|") Then
+                Throw New Exception("Invalid QR detected!")
+            End If
+
+            ' Parse QR
+            Dim qrResult = QRParser.ParseQR(qr)
+
+            If Not qrResult.HasValue Then
+                Throw New Exception("Invalid QR code structure!")
+            End If
+
+            ' Process QR
+            If outQR(qr, batch, boxNo) = True Then
 
                 If cmbDestination.Text = "Factory 2" Then
+
                     Dim transaction As New CreateTransaction()
 
                     transaction.SaveScanData(
-                                            txtRfid.Text.Trim(),
-                                            txtqr.Text.Trim(),
-                                            txt_batch.Text.Trim(), ""
-                                        )
+                    rfid,
+                    qr,
+                    batch,
+                    "",
+                    qrResult
+                )
+
                 End If
 
                 getGroup()
                 displayrecords()
+
             End If
+
+
+
+            ' Prevent Enter from triggering other controls
+            e.SuppressKeyPress = True
+            e.Handled = True
+
+        Catch ex As Exception
+
+            show_error(ex.Message, 1)
+        Finally
+            ' Clear for next scan
             txt_boxno.Clear()
             txtRfid.Clear()
+            txtqr.Clear()
             txtRfid.Focus()
-        End If
+        End Try
+
     End Sub
+
 
     Private Sub Guna2Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel1.Paint
 

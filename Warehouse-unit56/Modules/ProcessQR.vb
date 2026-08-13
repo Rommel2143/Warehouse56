@@ -222,7 +222,7 @@ Module ProcessQR
     End Function
 
 
-
+    Dim deleteHandler As New DeleteTransaction()
     Public Function returnQR(QRcode As String, batch As String) As Boolean
         Try
             If con.State = ConnectionState.Open Then con.Close()
@@ -239,6 +239,7 @@ Module ProcessQR
                         Return 0
                     Else
                         returnOUT(QRcode, batch)
+                        deleteHandler.DeleteScanData(QRcode)
                         Return 1
                     End If
 

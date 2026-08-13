@@ -6,28 +6,12 @@ Public Class CreateTransaction
     '"Server=PTI-032;Database=rfid_inventory;Uid=rfid;Pwd=rfid123;"
 
 
-    Public Sub SaveScanData(rfidbarcode As String, qrlot As String, batch As String, dn As String)
+    Public Sub SaveScanData(rfidbarcode As String, qrlot As String, batch As String, dn As String, qr As Object)
 
         Dim trans As MySqlTransaction = Nothing
 
         Try
-            'check RFID structure
-            If String.IsNullOrWhiteSpace(rfidbarcode) Or rfidbarcode.Contains("|") Then
-                Throw New Exception("Invalid RFID tag!")
-            End If
 
-            If Not qrlot.Contains("|") Then
-                Throw New Exception("Invalid QR detected!")
-            End If
-
-            ' Parse QR
-            Dim qrResult = QRParser.ParseQR(qrlot)
-
-            If Not qrResult.HasValue Then
-                Throw New Exception("Invalid QR code structure!")
-            End If
-
-            Dim qr = qrResult.Value
 
             Using con As New MySqlConnection(ConnectionString)
 
@@ -58,7 +42,7 @@ Public Class CreateTransaction
                     cmd.Parameters.AddWithValue("@LotNumber", qr.LotNumber)
                     cmd.Parameters.AddWithValue("@remarks", qr.Remarks)
                     cmd.Parameters.AddWithValue("@warehouseId", "5")
-                    cmd.Parameters.AddWithValue("@Batch", batch)
+                    cmd.Parameters.AddWithValue("@Batch", "UNIT5-" + batch)
                     cmd.Parameters.AddWithValue("@Qty", qr.Qty)
                     cmd.Parameters.AddWithValue("@status", "PAIR")
                     cmd.Parameters.AddWithValue("@dn", dn)
