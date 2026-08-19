@@ -86,7 +86,11 @@ Public Class StockMonitoring
         End Using
     End Sub
 
-    Private Sub btn_export_Click(sender As Object, e As EventArgs) Handles btn_export.Click
-        'exportExcel(datagrid2, "Daily Summary", Date.Now.ToString())
+    Private Sub btn_export_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        ExportToFile.ToExcel(datagrid2, "Stock Summary" & dtpicker1.Value.ToString("MMMM dd, yyyy"))
     End Sub
 End Class

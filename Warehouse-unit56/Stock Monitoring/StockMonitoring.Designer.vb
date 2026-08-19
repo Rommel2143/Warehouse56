@@ -38,8 +38,8 @@ Partial Class StockMonitoring
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dtpicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
-        Me.btn_export = New Guna.UI2.WinForms.Guna2Button()
         Me.datagrid2 = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel1.SuspendLayout()
         CType(Me.datagrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.datagrid2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -48,7 +48,7 @@ Partial Class StockMonitoring
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.datagrid1)
-        Me.Panel1.Location = New System.Drawing.Point(64, 159)
+        Me.Panel1.Location = New System.Drawing.Point(18, 86)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(665, 537)
         Me.Panel1.TabIndex = 0
@@ -125,7 +125,7 @@ Partial Class StockMonitoring
         Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.Guna2Button1.ForeColor = System.Drawing.Color.ForestGreen
         Me.Guna2Button1.Image = CType(resources.GetObject("Guna2Button1.Image"), System.Drawing.Image)
-        Me.Guna2Button1.Location = New System.Drawing.Point(598, 117)
+        Me.Guna2Button1.Location = New System.Drawing.Point(552, 44)
         Me.Guna2Button1.Name = "Guna2Button1"
         Me.Guna2Button1.Size = New System.Drawing.Size(131, 38)
         Me.Guna2Button1.TabIndex = 1
@@ -133,8 +133,8 @@ Partial Class StockMonitoring
         '
         'Guna2TextBox1
         '
-        Me.Guna2TextBox1.AutoRoundedCorners = True
         Me.Guna2TextBox1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Guna2TextBox1.BorderRadius = 4
         Me.Guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.Guna2TextBox1.DefaultText = ""
         Me.Guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -146,11 +146,11 @@ Partial Class StockMonitoring
         Me.Guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Guna2TextBox1.IconLeft = CType(resources.GetObject("Guna2TextBox1.IconLeft"), System.Drawing.Image)
         Me.Guna2TextBox1.IconLeftOffset = New System.Drawing.Point(5, 0)
-        Me.Guna2TextBox1.Location = New System.Drawing.Point(64, 117)
+        Me.Guna2TextBox1.Location = New System.Drawing.Point(18, 44)
         Me.Guna2TextBox1.Name = "Guna2TextBox1"
         Me.Guna2TextBox1.PlaceholderText = "Search Keyword..."
         Me.Guna2TextBox1.SelectedText = ""
-        Me.Guna2TextBox1.Size = New System.Drawing.Size(285, 36)
+        Me.Guna2TextBox1.Size = New System.Drawing.Size(528, 36)
         Me.Guna2TextBox1.TabIndex = 0
         '
         'Label1
@@ -159,7 +159,7 @@ Partial Class StockMonitoring
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DimGray
         Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label1.Location = New System.Drawing.Point(58, 82)
+        Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(209, 32)
         Me.Label1.TabIndex = 207
@@ -169,7 +169,7 @@ Partial Class StockMonitoring
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(59, 794)
+        Me.Label2.Location = New System.Drawing.Point(13, 680)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(152, 30)
         Me.Label2.TabIndex = 216
@@ -183,33 +183,14 @@ Partial Class StockMonitoring
         Me.dtpicker1.FillColor = System.Drawing.Color.White
         Me.dtpicker1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.dtpicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
-        Me.dtpicker1.Location = New System.Drawing.Point(64, 828)
+        Me.dtpicker1.Location = New System.Drawing.Point(18, 714)
         Me.dtpicker1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.dtpicker1.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
         Me.dtpicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dtpicker1.Name = "dtpicker1"
-        Me.dtpicker1.Size = New System.Drawing.Size(290, 36)
+        Me.dtpicker1.Size = New System.Drawing.Size(528, 36)
         Me.dtpicker1.TabIndex = 215
         Me.dtpicker1.Value = New Date(2025, 4, 10, 14, 15, 25, 746)
-        '
-        'btn_export
-        '
-        Me.btn_export.BorderColor = System.Drawing.Color.DimGray
-        Me.btn_export.BorderRadius = 3
-        Me.btn_export.BorderThickness = 1
-        Me.btn_export.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btn_export.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btn_export.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btn_export.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btn_export.FillColor = System.Drawing.Color.DimGray
-        Me.btn_export.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btn_export.ForeColor = System.Drawing.Color.White
-        Me.btn_export.Location = New System.Drawing.Point(372, 828)
-        Me.btn_export.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.btn_export.Name = "btn_export"
-        Me.btn_export.Size = New System.Drawing.Size(88, 36)
-        Me.btn_export.TabIndex = 214
-        Me.btn_export.Text = "Export Data"
         '
         'datagrid2
         '
@@ -239,7 +220,7 @@ Partial Class StockMonitoring
         DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.datagrid2.DefaultCellStyle = DataGridViewCellStyle7
         Me.datagrid2.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.datagrid2.Location = New System.Drawing.Point(64, 887)
+        Me.datagrid2.Location = New System.Drawing.Point(18, 757)
         Me.datagrid2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.datagrid2.Name = "datagrid2"
         Me.datagrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
@@ -252,7 +233,7 @@ Partial Class StockMonitoring
         DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.datagrid2.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.datagrid2.RowHeadersVisible = False
-        Me.datagrid2.Size = New System.Drawing.Size(716, 568)
+        Me.datagrid2.Size = New System.Drawing.Size(665, 568)
         Me.datagrid2.TabIndex = 213
         Me.datagrid2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.datagrid2.ThemeStyle.AlternatingRowsStyle.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -265,6 +246,25 @@ Partial Class StockMonitoring
         Me.datagrid2.ThemeStyle.HeaderStyle.Height = 29
         Me.datagrid2.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         '
+        'Guna2Button2
+        '
+        Me.Guna2Button2.BorderColor = System.Drawing.Color.ForestGreen
+        Me.Guna2Button2.BorderRadius = 3
+        Me.Guna2Button2.BorderThickness = 1
+        Me.Guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.Guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.Guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.Guna2Button2.FillColor = System.Drawing.Color.White
+        Me.Guna2Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.Guna2Button2.ForeColor = System.Drawing.Color.ForestGreen
+        Me.Guna2Button2.Image = CType(resources.GetObject("Guna2Button2.Image"), System.Drawing.Image)
+        Me.Guna2Button2.Location = New System.Drawing.Point(552, 714)
+        Me.Guna2Button2.Name = "Guna2Button2"
+        Me.Guna2Button2.Size = New System.Drawing.Size(131, 36)
+        Me.Guna2Button2.TabIndex = 217
+        Me.Guna2Button2.Text = "Export"
+        '
         'StockMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -272,9 +272,9 @@ Partial Class StockMonitoring
         Me.AutoScroll = True
         Me.AutoScrollMargin = New System.Drawing.Size(0, 50)
         Me.ClientSize = New System.Drawing.Size(1028, 730)
+        Me.Controls.Add(Me.Guna2Button2)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.dtpicker1)
-        Me.Controls.Add(Me.btn_export)
         Me.Controls.Add(Me.datagrid2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Guna2Button1)
@@ -299,6 +299,6 @@ Partial Class StockMonitoring
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents dtpicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
-    Friend WithEvents btn_export As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents datagrid2 As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
 End Class
