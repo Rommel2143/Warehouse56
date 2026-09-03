@@ -1,0 +1,791 @@
+﻿@page "/unit6"
+
+<PageTitle>Unit 6 Dashboard</PageTitle>
+
+<div class="unit6-page">
+
+    <!-- ============================================
+         TOP HEADER
+         ============================================ -->
+    <header class="dashboard-header">
+
+        <div class="header-left">
+
+            <div class="dashboard-icon">
+                <i class="bi bi-box-seam"></i>
+            </div>
+
+            <div>
+                <div class="dashboard-title-row">
+                    <h1>Unit 6 Dashboard</h1>
+
+                    <span class="live-indicator">
+                        <span class="live-dot"></span>
+                        LIVE
+                    </span>
+                </div>
+
+                <p>
+                    Warehouse inventory & logistics monitoring
+                </p>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+       
+
+            <div class="refresh-control">
+
+                <div class="refresh-countdown">
+
+                    @if (IsLoading)
+                    {
+                        <span class="refresh-spinner"></span>
+                        <span>Updating...</span>
+                    }
+                    else
+                    {
+                        <i class="bi bi-arrow-repeat"></i>
+                        <span>
+                            Next update
+                            <strong>@SecondsUntilRefresh</strong>s
+                        </span>
+                    }
+
+                </div>
+
+                <button class="refresh-button"
+                        @onclick="LoadDashboardAsync"
+                        disabled="@IsLoading">
+
+                    <i class="bi bi-arrow-clockwise @(IsLoading ? "spin" : "")"></i>
+
+                    @(IsLoading ? "Updating" : "Refresh")
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ============================================
+         ERROR
+         ============================================ -->
+    @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+    {
+        <div class="dashboard-alert">
+
+            <div class="alert-icon">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+
+            <div>
+                <strong>Unable to update dashboard</strong>
+                <span>@ErrorMessage</span>
+            </div>
+
+        </div>
+    }
+
+
+    <!-- ============================================
+         LOADING
+         ============================================ -->
+    @if (IsLoading && RecentItems.Count == 0)
+    {
+        <div class="dashboard-loading">
+
+            <div class="loading-ring"></div>
+
+            <strong>Loading Unit 6</strong>
+
+            <span>
+                Retrieving warehouse data...
+            </span>
+
+        </div>
+    }
+    else
+    {
+      
+
+
+        <!-- ============================================
+             MAIN CONTENT
+             ============================================ -->
+        <div class="dashboard-content">
+            <!-- ========================================
+     STOCK PANEL
+     ======================================== -->
+            <aside class="stock-panel">
+
+                <!-- Panel Header -->
+                <div class="panel-header">
+
+                    <div class="panel-title">
+
+                        <div class="panel-icon stock">
+                            <i class="bi bi-boxes"></i>
+                        </div>
+
+                        <div>
+                            <h2>Current Stock</h2>
+                            <p>Active stock by part code</p>
+                        </div>
+
+                    </div>
+
+                    <div class="stock-header-total">
+                        <strong>
+                            @PartStocks.Sum(x => x.Boxes).ToString("N0")
+                        </strong>
+
+                        <span>BOXES</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Stock Search -->
+                <div class="stock-search">
+
+                    <i class="bi bi-search"></i>
+
+                    <input type="text"
+                           class="stock-search-input"
+                           placeholder="Search part code or part name..."
+                           @bind="StockSearchText"
+                           @bind:event="oninput" />
+
+                    @if (!string.IsNullOrWhiteSpace(StockSearchText))
+                    {
+                        <button type="button"
+                                class="stock-search-clear"
+                                @onclick="ClearStockSearch">
+
+                            <i class="bi bi-x-circle-fill"></i>
+
+                        </button>
+                    }
+
+                </div>
+
+
+                <!-- Stock Summary -->
+                @if (FilteredPartStocks.Any())
+                {
+                    <div class="stock-summary">
+
+                        <!-- Part Codes -->
+                        <div class="stock-summary-item">
+
+                            <i class="bi bi-box-seam"></i>
+
+                            <div>
+                                <span>PART CODES</span>
+                                <strong>
+                                    @FilteredPartStocks.Count().ToString("N0")
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="stock-summary-divider"></div>
+
+
+                        <!-- Total Stock -->
+                        <div class="stock-summary-item">
+
+                            <i class="bi bi-stack"></i>
+
+                            <div>
+                                <span>TOTAL STOCK</span>
+                                <strong>
+                                    @FilteredPartStocks.Sum(x => x.Stock).ToString("N0")
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+
+                <!-- Empty State -->
+                @if (PartStocks.Count == 0)
+                {
+                    <div class="stock-empty">
+
+                        <i class="bi bi-inboxes"></i>
+
+                        <strong>No stock available</strong>
+
+                        <span>
+                            There are currently no active stock records.
+                        </span>
+
+                    </div>
+                }
+                else if (!FilteredPartStocks.Any())
+                {
+                    <div class="stock-empty">
+
+                        <i class="bi bi-search"></i>
+
+                        <strong>No matching parts</strong>
+
+                        <span>
+                            No part code or part name matches your search.
+                        </span>
+
+                    </div>
+                }
+                else
+                {
+                    <!-- Stock List -->
+                    <div class="stock-list">
+
+                        @foreach (var item in FilteredPartStocks)
+                        {
+                            <div class="stock-item">
+
+                                <!-- Item Header -->
+                                <div class="stock-item-header">
+
+                                    <!-- Part Information -->
+                                    <div class="stock-part">
+
+                                        <div class="stock-part-icon">
+                                            <i class="bi bi-box-seam"></i>
+                                        </div>
+
+                                        <div class="stock-part-info">
+
+                                            <strong class="part-code">
+                                                @item.PartName
+                                            </strong>
+
+                                            <span class="part-name">
+                                                @item.PartCode
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- Right Side -->
+                                    <div class="stock-item-right">
+
+                                        <!-- Quantity -->
+                                        <div class="stock-quantity-wrapper">
+
+                                            <strong class="stock-quantity">
+                                                @item.Stock.ToString("N0") pcs.
+                                            </strong>
+
+                                            <span class="stock-boxes">
+                                                @item.Boxes.ToString("N0") Boxes
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Movement -->
+                                        <div class="stock-movement">
+
+                                            <div class="movement-in">
+                                                <i class="bi bi-arrow-down-circle"></i>
+                                                <span>IN</span>
+                                                <strong>
+                                                    @item.StockIn.ToString("N0")
+                                                </strong>
+                                            </div>
+
+                                            <div class="movement-out">
+                                                <i class="bi bi-arrow-up-circle"></i>
+                                                <span>OUT</span>
+                                                <strong>
+                                                    @item.StockOut.ToString("N0")
+                                                </strong>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+                }
+
+            </aside>
+
+
+            <!-- ========================================
+                 RIGHT SIDE
+                 ======================================== -->
+            <main class="main-dashboard">
+
+
+    
+                <!-- ============================================
+             KPI CARDS
+             ============================================ -->
+                <section class="kpi-grid">
+
+
+
+
+                    <!-- TOTAL IN -->
+                    <div class="kpi-card kpi-in">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon green">
+                                <i class="bi bi-box-arrow-in-down"></i>
+                            </div>
+
+                            <span class="kpi-label">
+                                TOTAL IN TODAY
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value text-success">
+                            @Summary.TotalIn.ToString("N0")
+                        </div>
+
+                        <div class="kpi-footer">
+
+                            <span class="trend positive">
+                                <i class="bi bi-arrow-down-circle"></i>
+                                Incoming
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL OUT -->
+                    <div class="kpi-card kpi-out">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon orange">
+                                <i class="bi bi-box-arrow-up"></i>
+                            </div>
+
+                            <span class="kpi-label">
+                                TOTAL OUT TODAY
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value text-warning">
+                            @Summary.TotalOut.ToString("N0")
+                        </div>
+
+                        <div class="kpi-footer">
+
+                            <span class="trend warning">
+                                <i class="bi bi-arrow-up-circle"></i>
+                                Outgoing
+                            </span>
+
+                        </div>
+
+                    </div>
+                    <!-- TOTAL TRIPS TODAY -->
+                    <div class="kpi-card kpi-trip">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon red">
+                                <i class="bi bi-truck"></i>
+                            </div>
+
+                            <span class="kpi-label">
+                                TOTAL TRIPS TODAY
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value text-danger">
+                            @Summary.TotalTrip.ToString("N0")
+                        </div>
+
+                        <div class="kpi-footer">
+
+                            <span class="trend danger">
+                                <i class="bi bi-arrow-up-circle"></i>
+                                Delivery Trips
+                            </span>
+
+                        </div>
+
+                    </div>
+                    <!-- TOTAL RECORDS -->
+                    <div class="kpi-card">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon blue">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+
+                            <span class="kpi-label">
+                                TOTAL BOXES
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value">
+                            @Summary.TotalBoxes.ToString("N0")
+                        </div>
+
+                        <div class="kpi-footer">
+                            <span>
+                                <i class="bi bi-boxes"></i>
+                                Currently in Unit 6
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- QUANTITY -->
+                    <div class="kpi-card kpi-quantity">
+
+                        <div class="kpi-top">
+
+                            <div class="kpi-icon cyan">
+                                <i class="bi bi-stack"></i>
+                            </div>
+
+                            <span class="kpi-label">
+                                TOTAL QUANTITY
+                            </span>
+
+                        </div>
+
+                        <div class="kpi-value">
+                            @Summary.TotalQuantity.ToString("N0")
+                        </div>
+
+                        <div class="kpi-footer">
+
+                            <span>
+                                <i class="bi bi-box"></i>
+                                Units tracked
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ====================================
+                     RECENT TRANSACTIONS
+                     ==================================== -->
+                <section class="table-card">
+
+                    <div class="table-header">
+
+                        <div class="table-title">
+
+                            <div class="panel-icon activity">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+
+                            <div>
+
+                                <h2>Recent Logistics</h2>
+
+                                <p>
+                                    Latest Unit 6 transactions
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="table-meta">
+
+                            <span class="record-count">
+                                <i class="bi bi-list-ul"></i>
+                                @RecentItems.Count records
+                            </span>
+
+                            <span class="live-small">
+                                <span></span>
+                                LIVE
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table class="logistics-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>STATUS</th>
+                                    <th>PART</th>
+                                    <th>LOT</th>
+                                    <th class="text-end">QTY</th>
+                                    <th>IN</th>
+                                    <th>OUT</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                @if (RecentItems.Count == 0)
+                                {
+                                    <tr>
+
+                                        <td colspan="11">
+
+                                            <div class="table-empty">
+
+                                                <i class="bi bi-inboxes"></i>
+
+                                                <strong>
+                                                    No transactions found
+                                                </strong>
+
+                                                <span>
+                                                    Unit 6 has no recent logistics records.
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+                                }
+                                else
+                                {
+                                    @foreach (var item in RecentItems)
+                                    {
+                                        <tr>
+
+                                            <td>
+                                                <span class="record-id">
+                                                    #@item.Id
+                                                </span>
+                                            </td>
+
+
+                                            <td>
+
+                                                <span class="@GetStatusClass(item.Status)">
+                                                    @item.Status
+                                                </span>
+
+                                            </td>
+
+
+
+                                            <td>
+
+                                                <div class="part-cell">
+
+                                                    <strong>
+                                                        @item.PartCode
+                                                    </strong>
+
+                                                    <span>
+                                                        @item.PartName
+                                                    </span>
+
+                                                </div>
+
+                                            </td>
+
+
+                                            <td>
+                                                @item.LotNumber
+                                            </td>
+
+
+
+
+                                            <td class="text-end">
+
+                                                <strong class="qty-value">
+                                                    @item.Quantity.ToString("N0")
+                                                </strong>
+
+                                            </td>
+
+
+
+                                            <td>
+
+                                                @if (item.DateIn.HasValue)
+                                                {
+                                                    <div class="datetime">
+
+                                                        <strong>
+                                                           @item.BatchIN
+                                                        </strong>
+
+                                                        @if (!string.IsNullOrWhiteSpace(item.TimeIn))
+                                                        {
+                                                            <small>
+                                                                @item.DateIn.Value.ToString("MM/dd")
+                                                                @item.TimeIn
+                                                            </small>
+                                                        }
+
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <span class="not-available">—</span>
+                                                }
+
+                                            </td>
+
+
+                                            <td>
+
+                                                @if (item.DateOut.HasValue)
+                                                {
+                                                    <div class="datetime">
+
+                                                        <strong>
+                                                          @item.BatchOUT
+                                                        </strong>
+
+                                                        @if (!string.IsNullOrWhiteSpace(item.TimeOut))
+                                                        {
+                                                            <small>
+                                                                @item.DateOut.Value.ToString("MM/dd")
+                                                                @item.TimeOut
+                                                            </small>
+                                                        }
+
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <span class="not-available">—</span>
+                                                }
+
+                                            </td>
+
+
+                              
+
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="table-footer">
+
+                        <span>
+                            Showing latest
+                            <strong>@RecentItems.Count</strong>
+                            transactions
+                        </span>
+
+                        <span>
+                            Auto-refresh enabled
+                        </span>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    }
+
+</div>
+
+
+@code {
+
+    private string LastRefreshDisplay =>
+        DateTime.Now.ToString("HH:mm:ss");
+
+    private int TotalStockRecords =>
+        PartStocks.Sum(x => x.Stock);
+
+    private int ActivityTotal =>
+        Summary.TotalIn +
+        Summary.TotalOut +
+        Summary.TotalReturns;
+
+
+    private double GetActivityPercentage(int value)
+    {
+        if (ActivityTotal <= 0)
+            return 0;
+
+        return Math.Min(
+            100,
+            Math.Round((double)value / ActivityTotal * 100, 1));
+    }
+
+
+    private double GetStockPercentage(int stock)
+    {
+        if (TotalStockRecords <= 0)
+            return 0;
+
+        return Math.Min(
+            100,
+            Math.Round((double)stock / TotalStockRecords * 100, 1));
+    }
+
+
+    private static string GetStatusClass(string? status)
+    {
+        if (string.IsNullOrWhiteSpace(status))
+            return "status-badge";
+
+        return status.ToUpperInvariant() switch
+        {
+            "IN" => "status-badge status-in",
+
+            "OUT" => "status-badge status-out",
+
+            "RETURN" => "status-badge status-return",
+
+            "PACKED" => "status-badge status-packed",
+
+            "DELIVERED" => "status-badge status-delivered",
+
+            _ => "status-badge"
+        };
+    }
+}
