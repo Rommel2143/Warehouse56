@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_out" targetNamespace="http://tempuri.org/ds_out.xsd" xmlns:mstns="http://tempuri.org/ds_out.xsd" xmlns="http://tempuri.org/ds_out.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_out" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_out" msprop:Generator_UserDSName="ds_out">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="outgoing_delivery" msprop:Generator_TableClassName="outgoing_deliveryDataTable" msprop:Generator_TableVarName="tableoutgoing_delivery" msprop:Generator_TablePropName="outgoing_delivery" msprop:Generator_RowDeletingName="outgoing_deliveryRowDeleting" msprop:Generator_RowChangingName="outgoing_deliveryRowChanging" msprop:Generator_RowEvHandlerName="outgoing_deliveryRowChangeEventHandler" msprop:Generator_RowDeletedName="outgoing_deliveryRowDeleted" msprop:Generator_UserTableName="outgoing_delivery" msprop:Generator_RowChangedName="outgoing_deliveryRowChanged" msprop:Generator_RowEvArgName="outgoing_deliveryRowChangeEvent" msprop:Generator_RowClassName="outgoing_deliveryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="qrcode" msprop:Generator_ColumnVarNameInTable="columnqrcode" msprop:Generator_ColumnPropNameInRow="qrcode" msprop:Generator_ColumnPropNameInTable="qrcodeColumn" msprop:Generator_UserColumnName="qrcode" type="xs:string" minOccurs="0" />
+              <xs:element name="partcode" msprop:Generator_ColumnVarNameInTable="columnpartcode" msprop:Generator_ColumnPropNameInRow="partcode" msprop:Generator_ColumnPropNameInTable="partcodeColumn" msprop:Generator_UserColumnName="partcode" type="xs:string" minOccurs="0" />
+              <xs:element name="partname" msprop:Generator_ColumnVarNameInTable="columnpartname" msprop:Generator_ColumnPropNameInRow="partname" msprop:Generator_ColumnPropNameInTable="partnameColumn" msprop:Generator_UserColumnName="partname" type="xs:string" minOccurs="0" />
+              <xs:element name="lotno" msprop:Generator_ColumnVarNameInTable="columnlotno" msprop:Generator_ColumnPropNameInRow="lotno" msprop:Generator_ColumnPropNameInTable="lotnoColumn" msprop:Generator_UserColumnName="lotno" type="xs:string" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:int" minOccurs="0" />
+              <xs:element name="remarks" msprop:Generator_ColumnVarNameInTable="columnremarks" msprop:Generator_ColumnPropNameInRow="remarks" msprop:Generator_ColumnPropNameInTable="remarksColumn" msprop:Generator_UserColumnName="remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="boxno" msprop:Generator_ColumnVarNameInTable="columnboxno" msprop:Generator_ColumnPropNameInRow="boxno" msprop:Generator_ColumnPropNameInTable="boxnoColumn" msprop:Generator_UserColumnName="boxno" type="xs:string" minOccurs="0" />
+              <xs:element name="batchOUT" msprop:Generator_ColumnVarNameInTable="columnbatchOUT" msprop:Generator_ColumnPropNameInRow="batchOUT" msprop:Generator_ColumnPropNameInTable="batchOUTColumn" msprop:Generator_UserColumnName="batchOUT" type="xs:string" minOccurs="0" />
+              <xs:element name="fullname" msprop:Generator_ColumnVarNameInTable="columnfullname" msprop:Generator_ColumnPropNameInRow="fullname" msprop:Generator_ColumnPropNameInTable="fullnameColumn" msprop:Generator_UserColumnName="fullname" type="xs:string" minOccurs="0" />
+              <xs:element name="timeOUT" msprop:Generator_ColumnVarNameInTable="columntimeOUT" msprop:Generator_ColumnPropNameInRow="timeOUT" msprop:Generator_ColumnPropNameInTable="timeOUTColumn" msprop:Generator_UserColumnName="timeOUT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="dateOUT" msprop:Generator_ColumnVarNameInTable="columndateOUT" msprop:Generator_ColumnPropNameInRow="dateOUT" msprop:Generator_ColumnPropNameInTable="dateOUTColumn" msprop:Generator_UserColumnName="dateOUT" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:outgoing_delivery" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
