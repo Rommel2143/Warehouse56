@@ -72,32 +72,40 @@ Public Class Delivery
             Dim qr As String = txtqr.Text.Trim()
             Dim batch As String = txt_batch.Text.Trim()
             Dim boxNo As String = txt_boxno.Text.Trim()
+            Dim destination As String = cmbDestination.Text.Trim()
 
-            ' Check RFID structure
-            If String.IsNullOrWhiteSpace(rfid) OrElse
-           rfid.Contains("|") OrElse
-           Not rfid.StartsWith("E280116", StringComparison.OrdinalIgnoreCase) AndAlso
-           Not rfid.StartsWith("800304", StringComparison.OrdinalIgnoreCase) Then
-
-                Throw New Exception("Invalid RFID tag!")
-            End If
-
-            ' Check QR structure
+            '========================
+            ' VALIDATE QR
+            '========================
             If Not qr.Contains("|") Then
                 Throw New Exception("Invalid QR detected!")
             End If
 
-            ' Parse QR
             Dim qrResult = QRParser.ParseQR(qr)
 
             If Not qrResult.HasValue Then
                 Throw New Exception("Invalid QR code structure!")
             End If
 
-            ' Process QR
-            If outQR(qr, batch, boxNo) = True Then
+            '========================
+            ' FACTORY 2
+            ' RFID IS REQUIRED
+            '========================
+            If destination.Equals("Factory 2", StringComparison.OrdinalIgnoreCase) Then
 
-                If cmbDestination.Text = "Factory 2" Then
+                If String.IsNullOrWhiteSpace(rfid) Then
+                    Throw New Exception("RFID is required for Factory 2!")
+                End If
+
+                If rfid.Contains("|") OrElse
+               (Not rfid.StartsWith("E280116", StringComparison.OrdinalIgnoreCase) AndAlso
+                Not rfid.StartsWith("800304", StringComparison.OrdinalIgnoreCase)) Then
+
+                    Throw New Exception("Invalid RFID tag!")
+                End If
+
+                ' OUT QR
+                If outQR(qr, batch, boxNo) Then
 
                     Dim transaction As New CreateTransaction()
 
@@ -111,12 +119,18 @@ Public Class Delivery
 
                 End If
 
-                getGroup()
-                displayrecords()
+            Else
+
+                '========================
+                ' OTHER DESTINATIONS
+                ' NO RFID REQUIRED
+                '========================
+                outQR(qr, batch, boxNo)
 
             End If
 
-
+            getGroup()
+            displayrecords()
 
             ' Prevent Enter from triggering other controls
             e.SuppressKeyPress = True
@@ -125,16 +139,23 @@ Public Class Delivery
         Catch ex As Exception
 
             show_error(ex.Message, 1)
+
         Finally
+
             ' Clear for next scan
             txt_boxno.Clear()
             txtRfid.Clear()
             txtqr.Clear()
-            txtRfid.Focus()
+
+            If txtRfid.Enabled = False Then
+                txtqr.Focus()
+            Else
+                txtRfid.Focus()
+            End If
+
         End Try
 
     End Sub
-
 
     Private Sub Guna2Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel1.Paint
 
@@ -149,6 +170,14 @@ Public Class Delivery
             txtqr.Clear()
             txtqr.Enabled = True
             txtqr.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbDestination_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDestination.SelectedIndexChanged
+        If cmbDestination.SelectedItem = "Factory 2" Then
+            txtRfid.Enabled = True
+        Else
+            txtRfid.Enabled = False
         End If
     End Sub
 End Class
